@@ -1,0 +1,60 @@
+
+<div class="container">
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addVehicleModal">
+        Hozzáadás
+    </button>
+
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Rendszám</th>
+            <th *ngIf="showBrand">Márka</th>
+            <th>Ár</th>
+        </tr>
+        <tr *ngFor="let vehicle of vehicles">
+            <td>{{vehicle.id}}</td>
+            <td>{{vehicle.plate}}</td>
+            <td *ngIf="showBrand">{{vehicle.brand}}</td>
+            <td>{{vehicle.price}}</td>
+        </tr>
+    </table>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="addVehicleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="id" class="form-label">ID</label>
+                <input type="text" class="form-control" placeholder="1" [formControl]="id">
+              </div>
+              <div class="mb-3">
+                <label for="plate" class="form-label">Rendszám</label>
+                <input type="text" class="form-control" placeholder="ABC-123" [formControl]="plate">
+              </div>
+              <div class="mb-3">
+                <label for="brand" class="form-label">Márka</label>
+                <input type="text" class="form-control" placeholder="LADA" [formControl]="brand">
+              </div>
+              <div class="mb-3">
+                <label for="price" class="form-label">Ár</label>
+                <input type="text" class="form-control" placeholder="150000" [formControl]="price">
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezárás</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="on_save_button()">Mentés</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
